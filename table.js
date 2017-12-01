@@ -1,3 +1,5 @@
+const Events = require('events');
+
 function Table() {
     this.id = (function () {
         return "t"
@@ -20,8 +22,14 @@ function Table() {
     this.getPlayerCount = function () {
         return this.players.length;
     };
+    this.Emitter = new Events.EventEmitter();
+    this.Emitter.broadcast = function(players, obj){
+        let c = 1;
+        players.forEach(res => res.Emitter.emit("event", c++, obj))
+    };
     return this;
 }
+
 
 // console.log(new Table())
 module.exports = Table;

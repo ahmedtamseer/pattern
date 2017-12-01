@@ -1,5 +1,8 @@
-var Player = require('./player');
-var Table = require('./table');
+const Player = require('./player');
+const Table = require('./table');
+const Events = require('events');
+const Emitter = new Events.EventEmitter();
+
 
 var Players = [];
 var Tables = [];
@@ -37,5 +40,8 @@ function getMyTableId(index) {
 }
 
 // console.log('Players', Players)
-console.log('tables', getMyTable(Players[6].tableId))
+// console.log('tables', getMyTable(Players[6].tableId))
+
+// Players[getPlayersLength() - 1].Emitter.emit('event',{"a":"ddd"}, "Aa");
+Tables[getTableLength() - 3].Emitter.broadcast(Tables[getTableLength() - 2].players, {"a":"dddddddd"});
 // console.log('tables', Tables(Players[6].tableId))
